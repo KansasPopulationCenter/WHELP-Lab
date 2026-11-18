@@ -1,0 +1,3 @@
+# Preserve the replication files for checksum verification.
+S1_Data/** -text
+S1_Code/** -text

@@ -1,0 +1,17 @@
+{
+  "analysis_date": "2026-11-11",
+  "request": "Restrict beyond-first-year repeat-diagnosis analysis to people with more than three months of available follow-up",
+  "operational_threshold": "Strictly more than 90 observable days after the first calendar anniversary of discharge (91 or more days). This is an approximate three-month cutoff, not three calendar months.",
+  "minimum_followup_days": 91,
+  "base_cohort": "Original 175505 matched-pair pregnancy-group women with 2023 delivery admissions, same early-first cohorts",
+  "initial_counts": {"Hypertension":1932,"Diabetes":922,"Sickle cell trait":779},
+  "first_record": "First primary record before 20 weeks after original history and own pre-index exclusions",
+  "start": "Day after first calendar anniversary of delivery-hospitalization discharge",
+  "end": "2024-12-31",
+  "eligibility": "More than 90 available observation days and continuous recorded medical enrollment from discharge through 2024-12-31; commercial or managed Medicaid at delivery discharge",
+  "outcome": "Any repeat primary-definition diagnosis in any setting throughout each woman's entire available period after the first discharge anniversary; no evaluation, medication, or procedure requirement",
+  "codes": {"Hypertension":["I10","I11","I12","I13","I15"],"Diabetes":["E10","E11","E13"],"Sickle cell trait":["D57.3"]},
+  "uncertainty": "Wilson pointwise 95% intervals; descriptive independent Newcombe payer contrasts, not adjusted for follow-up duration or confounding",
+  "interpretation": "Excludes very short follow-up but still compares unequal observation periods; repeat documentation does not establish treatment",
+  "document_edits": false
+}

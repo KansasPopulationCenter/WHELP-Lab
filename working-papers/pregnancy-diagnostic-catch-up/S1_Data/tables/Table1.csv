@@ -1,0 +1,13 @@
+Condition,Window,Pairs,"Pregnancy
+per 1,000","Comparison
+per 1,000","Difference per 1,000
+(95% CI)"
+Hypertension,Before index,"159,727",6.61,6.54,0.07 (−0.49 to 0.63)
+,First 12 weeks,"157,637",7.47,5.74,1.73 (1.17 to 2.30)
+,Before 20 weeks,"157,637",12.09,9.73,2.36 (1.63 to 3.08)
+Diabetes,Before index,"166,472",2.83,3.05,−0.22 (−0.58 to 0.15)
+,First 12 weeks,"165,495",3.24,2.79,0.46 (0.09 to 0.83)
+,Before 20 weeks,"165,495",5.55,4.63,0.92 (0.44 to 1.41)
+Sickle cell trait,Before index,"175,039",0.23,0.23,−0.01 (−0.11 to 0.10)
+,First 12 weeks,"174,958",1.74,0.18,1.56 (1.35 to 1.77)
+,Before 20 weeks,"174,958",4.44,0.32,4.12 (3.80 to 4.44)

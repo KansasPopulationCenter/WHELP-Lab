@@ -1,0 +1,18 @@
+{
+  "analysis_date": "2026-11-11",
+  "question": "Repeat diagnosis documentation in the first postpartum year and months 7-12 by payer at delivery",
+  "cohort": "Pregnancy-group members of the original 175505 matched pairs, with delivery admissions in 2023",
+  "expected_initial_counts": {"Hypertension": 1932, "Diabetes": 922, "Sickle cell trait": 779},
+  "first_record": "Same condition-specific pair history exclusion during days -449 through -85; woman's first primary record during days -84 through 139 must be on days 0 through 139. Her partner's pre-index record does not exclude her from this descriptive follow-up.",
+  "codes": {"Hypertension": ["I10", "I11", "I12", "I13", "I15"], "Diabetes": ["E10", "E11", "E13"], "Sickle cell trait": ["D57.3"]},
+  "delivery_date": "First delivery-coded claim within the linked hospitalization, a proxy for actual delivery date",
+  "first_year": "Day after delivery-hospitalization discharge through the calendar anniversary of the delivery-date proxy, inclusive",
+  "months_7_12": "Day after the six-calendar-month anniversary of the delivery-date proxy through the one-calendar-year anniversary, inclusive; also must be after discharge",
+  "eligibility": "Source dates cover entire observation period and a continuous medical-enrollment span covers discharge through calendar-year anniversary. Identical denominator for both windows.",
+  "payer": "Commercial or managed Medicaid measured at delivery discharge; payer can change postpartum",
+  "outcome": "At least one diagnosis matching the same primary condition definition in any setting; no E/M, prescription, or procedure requirement",
+  "uncertainty": "Wilson pointwise 95% confidence intervals; independent Newcombe intervals for managed Medicaid minus commercial; exploratory, no multiplicity adjustment",
+  "interpretation": "Repeat documentation, not confirmed continuing treatment; sickle cell trait is not a treatment-continuation outcome",
+  "source_diagnoses_through": "2024-12-31",
+  "document_edits": false
+}

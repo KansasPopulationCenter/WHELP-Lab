@@ -1,0 +1,54 @@
+Licensed analysis inputs and local configuration
+
+Set --source-root (or WH_AHN_ROOT) to the root with this exact relative layout:
+
+Aim1_Postpartum_Heat/data/aim1-Joseph.duckdb
+  Prepared DuckDB source; opened read-only. Required tables/fields used here:
+  delivery_covariates: delivery_id, hvid, admit, discharge, pregnancy_start,
+    ga_recorded, ga_weeks, state, pay_type.
+  cohort: delivery_id, year_of_birth.
+  medical_spans: hvid, span_start, span_end (continuous recorded medical coverage).
+  enrollment: hvid, benefit_type, date_start, date_end, pay_type.
+  predelivery_dx: hvid, date_start, code. This is the cached condition extract,
+    despite its historical name. Follow-up scripts read its full 2023-2024
+    diagnosis dates, through 31 December 2024. Code strings are normalized without
+    decimal points; the prepared diabetes extract contains E10/E11/E13 and O24,
+    not E08/E09. It is not interchangeable with an unrestricted full-code claims
+    table: doing so can alter the analysis.
+
+analysis_heat/claims.duckdb
+  Prepared DuckDB source; opened read-only. Required table:
+  eligible_deliveries: delivery_id, hvid, admit, discharge, first_delivery_signal.
+  first_delivery_signal supplies the delivery claim-date proxy used to anchor
+  the first-year endpoint. Delivery identifiers and intervals must agree with
+  the first prepared database. This field is not the discharge date.
+
+data/procedure.csv
+  Licensed pipe-delimited CSV with header; read initially as strings. Required
+  columns: hvid, date_start, procedure_code, location_of_care_code,
+  location_of_care_qual. Procedure codes and place-of-service fields must retain
+  their original string representation. The source scan retains relevant codes
+  between 2021-01-01 and 2024-01-01, then applies individual analysis windows.
+
+The source data contain patient identifiers and dates; no such records are
+distributed with S1_Data or S1_Code. Column names identifying the local joins
+appear in code and schema documentation only. These are not identifier values.
+
+Prepared inputs must have the same content, cohort construction, normalized
+codes, enrollment-spanning rules and date coverage as the original analysis.
+The source-preparation process is outside this archive. File names alone do not
+establish equivalence. The scripts validate selected counts and boundaries but
+cannot prove that a different source database represents the same release.
+
+Generated local working inputs
+  ahn_work.duckdb: created by analyze_ahn.py and extended by contact/follow-up
+  scripts. Contains private pairs, people, selected_dates, procedure_days,
+  encounter_counts and other patient-level tables. Never upload this file.
+  ahn_results.json and ahn_procedures.json: full aggregate original outputs,
+  used by payer validation. Do not substitute the selected-field public JSON
+  files for these full outputs when running the original payer analysis.
+  protocol.json and beyond_protocol.json: copied from protocols by the wrapper.
+
+No usernames, credentials, access tokens, passwords or private local directory
+prefixes are required in the distributed configuration. Authentication/access
+to the licensed source files must be arranged locally outside this package.

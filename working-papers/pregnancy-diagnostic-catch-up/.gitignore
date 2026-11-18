@@ -1,0 +1,26 @@
+# Licensed inputs, secrets, and generated outputs
+*.duckdb
+*.duckdb.*
+*.sqlite*
+*.db
+*.db-wal
+*.parquet
+*.feather
+*.dta
+*.rds
+*.RData
+*.Rhistory
+.env
+.env.*
+raw_data/
+private/
+work/
+reproduced_figures/
+
+# Local environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+Thumbs.db
+.DS_Store

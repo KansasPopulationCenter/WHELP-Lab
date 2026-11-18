@@ -1,0 +1,11 @@
+Measure,Commercial,Commercial,Managed Medicaid,Managed Medicaid
+Measure,Pregnancy,Comparison,Pregnancy,Comparison
+"Women, n","63,183","63,183","107,515","107,515"
+"Mean days, 365-day history period",4.86,4.48,4.21,4.16
+"No evaluation during history period, %",11.3,13.8,22.7,23.7
+"Mean days, 12 weeks before index",1.18,1.06,0.96,0.96
+"No evaluation before index, %",44.4,48.1,55.2,55.5
+"Mean days, first 12 weeks after index",1.80,1.10,1.89,0.97
+Mean within-woman change,0.63,0.04,0.94,0.01
+Pregnancy-minus-comparison difference in changes (95% CI),0.58 (0.57 to 0.60),0.58 (0.57 to 0.60),0.93 (0.91 to 0.94),0.93 (0.91 to 0.94)
+Managed Medicaid minus commercial difference in changes (95% CI),0.34 (0.32 to 0.37),0.34 (0.32 to 0.37),0.34 (0.32 to 0.37),0.34 (0.32 to 0.37)

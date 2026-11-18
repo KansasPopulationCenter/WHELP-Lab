@@ -1,0 +1,24 @@
+Submission package validation (13 November 2026)
+
+PASS: All three figures reproduced using the supplied aggregate data, with
+pixel-identical TIFFs matching the final submission figures. Each is 600 dpi,
+RGB and LZW-compressed, with the same counts, rates, confidence intervals,
+colors and layout as the final figure preparation.
+PASS: Both table CSVs match the source manuscript cell text exactly, including
+merged-cell repetitions. Their displayed values round from the accompanying
+unrounded aggregate estimates to the printed manuscript values.
+PASS: All Python sources parse successfully. The licensed analysis sources
+have only the documented local-path/dependency-path changes; SQL/statistical
+logic remains unchanged.
+PASS: Package contains only allowlisted code, text, protocol and aggregate data
+files. Data headers/keys contain no patient identifier fields. No private local
+user prefixes or credential patterns were found. No working databases, raw
+claims, patient-level files, dependency trees or generated figure caches were
+included. Each ZIP is below 20 MB.
+
+NOT RUN: Licensed-data analysis rerun. No claim of raw-claims end-to-end
+reproduction is made: the two prepared DuckDB inputs, procedure CSV and their
+upstream construction are not distributed. See README.txt and INPUTS.txt.
+
+Tested environment: Python 3.12.14; numpy 2.3.5; pandas 3.0.1; matplotlib 3.10.9;
+Pillow 13.0.0; Windows Arial. Recorded original analysis DuckDB version: 1.5.5.

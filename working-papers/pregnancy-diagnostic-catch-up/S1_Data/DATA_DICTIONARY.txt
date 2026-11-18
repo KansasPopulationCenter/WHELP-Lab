@@ -1,0 +1,69 @@
+Aggregate data dictionary
+
+General
+  pregnant=1 or role=case: woman entering pregnancy at the matched index date.
+  pregnant=0 or role=control: her matched comparison woman.
+  The index is estimated pregnancy start, not delivery. Diagnosis history spans
+  relative days -449 through -85. Before-index outcome follow-up is -84 to -1;
+  first 12 weeks is 0 to 83; before 20 weeks is 0 to 139 (inclusive).
+  COMMERCIAL and MANAGED MEDICAID are recorded medical-enrollment payer categories.
+  The term Diabetes in source files denotes non-gestational diabetes in the figure.
+  The primary diabetes source extract contains E10/E11/E13, not E08/E09.
+  Sickle cell trait denotes D57.3 (not sickle cell anemia).
+
+primary/ahn_results.json
+  pairs: total matched pairs before condition-specific history exclusions.
+  conditions: shared-code hypertension, diabetes and sickle cell trait.
+  pairs_washout: pairs without either woman's relevant condition in history.
+  -1, 83, 139: endpoint summaries for the three analysis windows defined above.
+  pairs: endpoint denominator; pregnant/control: women with a first code.
+  rd_per_1000: [pregnancy-minus-comparison risk difference, lower 95% CI,
+  upper 95% CI]. Post-index windows also exclude pairs with either member's
+  qualifying pre-index code. Intervals use empirical within-pair contrasts.
+  weeks rows: [pregnant, start_week, days_at_risk, first_code_days]. Weekly rows
+  are combined into non-overlapping four-week periods for the figure.
+
+primary/ahn_procedures.json
+  weeks rows: [pregnant, start_week, billed_evaluation_days]. Plot denominator
+  is 175,505 women times four weeks; displayed unit is days per 100 woman-weeks.
+
+payer/outpatient_contact_timing.csv
+  start_week: start of four-week period; n_women: stratum denominator.
+  evaluation_days: sum of distinct billed evaluation days across women.
+  evaluation_days_per_100_woman_weeks = evaluation_days/(n_women*4)*100.
+payer/diagnosis_timing.csv
+  start_week/end_week: bounds of four-week interval (end is exclusive).
+  first_records: count of first qualifying records; person_days: days at risk.
+  rate_per_1000_woman_weeks = first_records/(person_days/7)*1000.
+payer/outpatient_contact.csv
+  n_pairs: matched pairs in the payer stratum. case/control prefixes identify
+  paired roles. prior: 365-day history; before: 12 weeks before index; after:
+  first 12 weeks after index. mean_days/zero_pct: average evaluation days and
+  percentage with none. change_mean_days: after-minus-before within-woman mean.
+  estimate/se/ci_low/ci_high: pregnancy-minus-comparison difference in changes,
+  its empirical paired standard error and normal 95% confidence limits.
+payer/contact_payer_contrast.csv
+  medicaid_minus_commercial: difference between the two stratum contrasts.
+  se/ci_low/ci_high: its standard error and normal 95% confidence interval.
+  p_value: two-sided unadjusted normal-test p-value; holm_p_four_primary_tests:
+  Holm adjustment across the original four exploratory payer contrasts.
+
+followup/*.csv
+  condition/payer_at_delivery: condition and woman's own payer at delivery.
+  eligible_women: denominator; repeat_records: WOMEN with at least one repeat
+  condition code, not the total number of claims or codes.
+  proportion/ci_low/ci_high and percent/percent_ci_low/percent_ci_high: point
+  estimate and Wilson 95% confidence limits on 0-1 and 0-100 scales.
+  Both cohorts first had a qualifying record before 20 weeks of pregnancy and
+  had pair-based exclusions for the earlier 365-day diagnosis-history period.
+  Figure 3A (window=first_year) counts records from the day after discharge
+  through the first anniversary of the delivery claim date; continuous medical
+  enrollment is required from discharge through that anniversary.
+  Figure 3B (window=beyond_first_year) counts records from the day after the first
+  discharge anniversary through 31 December 2024. At least 91 available days
+  (>90 days) and continuous medical enrollment from discharge through that end
+  date are required. Available periods remain unequal (91-363 days).
+  followup_min_days/followup_p25_days/followup_median_days/followup_p75_days/
+  followup_max_days describe days available
+  in eligible women, not a survival time. total_observation_days is their sum.
+  The two panels are not nested outcomes and do not share denominators.

@@ -1,0 +1,2 @@
+analysis,outcome,definition,window,units,medicaid_minus_commercial,se,ci_low,ci_high,p_value,holm_p_four_primary_tests
+case_delivery_payer,Outpatient evaluation days,contact,12-week difference in changes,days per woman,0.343773082733,0.0119833506862,0.320285715388,0.367260450078,5.45431942287e-181,2.18172776915e-180
